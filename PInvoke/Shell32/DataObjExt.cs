@@ -64,6 +64,7 @@ public static partial class DataObjectExtensions
 	/// Part of the aspect when the data must be split across page boundaries. The most common value is -1, which identifies all of the
 	/// data. For the aspects DVASPECT_THUMBNAIL and DVASPECT_ICON, lindex is ignored.
 	/// </param>
+	/// <param name="precheckFormat">If true, the format will be checked before attempting to get the data. <see langword="true"/> is the default.</param>
 	/// <returns>
 	/// <para>The object associated with the request. If no object can be determined, a <see cref="byte"/>[] is returned.</para>
 	/// <para>Conversion for different clipboard formats is as follows:</para>
@@ -146,7 +147,7 @@ public static partial class DataObjectExtensions
 	/// </list>
 	/// </returns>
 	/// <exception cref="InvalidOperationException">Unrecognized TYMED value.</exception>
-	public static object? GetData(this IDataObject dataObj, uint formatId, DVASPECT aspect = DVASPECT.DVASPECT_CONTENT, int index = -1)
+	public static object? GetData(this IDataObject dataObj, uint formatId, DVASPECT aspect = DVASPECT.DVASPECT_CONTENT, int index = -1, bool precheckFormat = true)
 	{
 		ClipCorrespondingTypeAttribute? attr = ShellClipboardFormat.clipFmtIds.Value.TryGetValue(formatId, out (string name, ClipCorrespondingTypeAttribute? attr) data) ? data.attr : null;
 		TYMED tymed = attr?.Medium ?? AllTymed.Value;
@@ -157,7 +158,7 @@ public static partial class DataObjectExtensions
 			lindex = index,
 			tymed = tymed
 		};
-		if (!dataObj.EnumFormats().Contains(formatetc, FORMATETCComparer.Default))
+		if (precheckFormat && !dataObj.EnumFormats().Contains(formatetc, FORMATETCComparer.Default))
 			throw new InvalidOperationException("The specified format is not available from the data object.");
 		dataObj.GetData(ref formatetc, out var medium);
 
