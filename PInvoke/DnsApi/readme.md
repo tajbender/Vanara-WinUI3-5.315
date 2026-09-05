@@ -75,6 +75,7 @@ Native Enum | Header | Managed Enum
 ### Structures  
 Native Structure | Header | Managed Structure  
 --- | --- | ---  
+[&lt;bPad&gt;e__FixedBuffer](https://www.google.com/search?num=5&q=<bPad>e__FixedBuffer+site%3Alearn.microsoft.com) |  | [Vanara.PInvoke.DnsApi.DNS_TLSA_DATA.&lt;bPad&gt;e__FixedBuffer](https://github.com/dahall/Vanara/search?l=C%23&q=%26lt%3BbPad%26gt%3Be__FixedBuffer)  
 [DNS_A_DATA](https://www.google.com/search?num=5&q=DNS_A_DATA+site%3Alearn.microsoft.com) | windns.h | [Vanara.PInvoke.DnsApi.DNS_A_DATA](https://github.com/dahall/Vanara/search?l=C%23&q=DNS_A_DATA)  
 [DNS_AAAA_DATA](https://www.google.com/search?num=5&q=DNS_AAAA_DATA+site%3Alearn.microsoft.com) | windns.h | [Vanara.PInvoke.DnsApi.DNS_AAAA_DATA](https://github.com/dahall/Vanara/search?l=C%23&q=DNS_AAAA_DATA)  
 [DNS_ADDR](https://www.google.com/search?num=5&q=DNS_ADDR+site%3Alearn.microsoft.com) | windns.h | [Vanara.PInvoke.DnsApi.DNS_ADDR](https://github.com/dahall/Vanara/search?l=C%23&q=DNS_ADDR)  

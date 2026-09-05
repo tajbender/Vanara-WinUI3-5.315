@@ -79,7 +79,7 @@ public static partial class NtDll
 		/// applications to run on 64-bit Windows).
 		/// <para>Use the IsWow64Process2 function to obtain this information.</para>
 		/// </summary>
-		[CorrespondingType(typeof(BOOL), CorrespondingAction.Get)]
+		[CorrespondingType(typeof(IntPtr), CorrespondingAction.Get)]
 		ProcessWow64Information = 26,
 
 		/// <summary>
@@ -920,7 +920,7 @@ public static partial class NtDll
 		public readonly NTStatus ExitStatus => (NTStatus)Reserved1.ToInt32();
 
 		/// <summary>Points to a <see cref="PEB"/> structure.</summary>
-		public readonly ref PEB Peb => ref PebBaseAddress.AsRef<PEB>();
+		public readonly PEB Peb => PebBaseAddress.ToStructure<PEB>();
 
 		/// <summary>Contains the same value that GetProcessAffinityMask returns for the lpProcessAffinityMask parameter.</summary>
 		public readonly nuint AffinityMask => Reserved2_1.ToUIntPtr();
